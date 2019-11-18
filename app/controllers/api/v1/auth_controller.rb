@@ -7,7 +7,7 @@ class Api::V1::AuthController < ApplicationController
             
             render json: { user: UserSerializer.new(user), token: issue_token(user_id: user.id) }, status: :accepted
         else
-            render json: { message: 'Invalid email or password' }, status: :unauthorized
+            render json: { error: 'Invalid email or password' }, status: :unauthorized
         end
     end
 

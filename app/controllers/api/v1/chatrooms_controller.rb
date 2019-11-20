@@ -1,8 +1,16 @@
 class Api::V1::ChatroomsController < ApplicationController
     
     def index
-        chatrooms = Chatroom.all
+        chatrooms = Chatroom.all.map{|c| SummarizedChatroomsSerializer.new(c)}
         render json: chatrooms
+    end
+
+    def uindex
+      if @current_user
+        chatrooms = Chatroom.all.filter{|c|  byebug }
+        
+        render json: 
+      end
     end
 
     def create

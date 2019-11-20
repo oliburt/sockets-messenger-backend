@@ -6,9 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Message.destroy_all
+UserChatroom.destroy_all
 User.destroy_all 
 Chatroom.destroy_all
 
 
-chatrooms = Chatroom.create([{name: "Global", description: "TEST"}])
+chatrooms = Chatroom.create([{name: "Global", description: "TEST", public: true}])
 
+UserChatroom.create([{user_id: 1, chatroom_id: 1}])

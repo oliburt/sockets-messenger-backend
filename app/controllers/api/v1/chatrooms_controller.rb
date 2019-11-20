@@ -1,15 +1,16 @@
 class Api::V1::ChatroomsController < ApplicationController
     
     def index
-        chatrooms = Chatroom.all.map{|c| SummarizedChatroomsSerializer.new(c)}
-        render json: chatrooms
+        # only serve public chatrooms
+        chatrooms = Chatroom.all.filter{|room| room.public }
+        render json: chatrooms, each_serializer: SummarizedChatroomsSerializer
     end
 
     def uindex
       if @current_user
-        chatrooms = Chatroom.all.filter{|c|  byebug }
-        
-        render json: 
+        chatrooms = Chatroom.all
+        # Todo filter for current_user
+        render json: chatrooms
       end
     end
 

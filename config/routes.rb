@@ -7,7 +7,10 @@ Rails.application.routes.draw do
         resources :chatrooms
         resources :users
 
+        get '/uchatrooms', to: 'chatrooms#uindex'
+
         post "/login", to: "auth#create"
+        delete "/logout", to: "auth#destroy"
         post "/signup", to: "users#create"
         post "/validate", to: "auth#validate"
       end

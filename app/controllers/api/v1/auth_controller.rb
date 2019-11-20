@@ -4,8 +4,9 @@ class Api::V1::AuthController < ApplicationController
         user = User.find_by(username: user_login_params[:username])
         
         if user && user.authenticate(user_login_params[:password])
-            
-            render json: { user: UserSerializer.new(user), token: issue_token(user_id: user.id) }, status: :accepted
+            jwt_token = issue_token(user_id: user.id)
+            cookies.signed[:jwt] = {value: jwt_token, httponly: true, expires: 1.hour.from_now}
+            render json: { user: UserSerializer.new(user) }, status: :accepted
         else
             render json: { error: 'Invalid email or password' }, status: :unauthorized
         end
@@ -13,10 +14,16 @@ class Api::V1::AuthController < ApplicationController
 
     def validate
         if @current_user
-            render json: { token: issue_token({user_id: @current_user.id}), user: UserSerializer.new(@current_user)}
+            jwt_token = issue_token(user_id: @current_user.id)
+            cookies.signed[:jwt] = {value: jwt_token, httponly: true, expires: 1.hour.from_now}
+            render json: { user: UserSerializer.new(@current_user)}
         else
             render json: { errors: ["user not found"] }, status: :not_found
         end
+    end
+
+    def destroy
+        cookies.delete(:jwt)
     end
 
     private

@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_100930) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "creator_id"
-    t.boolean "pulic"
+    t.boolean "public"
   end
 
   create_table "messages", force: :cascade do |t|

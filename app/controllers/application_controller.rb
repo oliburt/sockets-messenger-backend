@@ -1,5 +1,7 @@
 
     class ApplicationController < ActionController::API
+        include ::ActionController::Cookies
+        
         before_action :set_current_user
     
         def issue_token(payload)
@@ -12,7 +14,7 @@
         end
     
         def get_token
-            request.headers["Authorization"] || request.headers["Authorisation"]
+            cookies.signed[:jwt] 
         end
     
         def set_current_user

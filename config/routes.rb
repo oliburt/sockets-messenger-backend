@@ -3,11 +3,13 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-        resources :messages
-        resources :chatrooms
-        resources :users
+        resources :messages, only: [:create]
+        resources :chatrooms, only: [:create, :index, :destroy, :show]
+        resources :users, only: [:create, :index]
+        resources :user_chatrooms, only: [:create, :destroy]
 
         get '/uchatrooms', to: 'chatrooms#uindex'
+        post '/newdm', to: 'chatrooms#dmcreate'
 
         post "/login", to: "auth#create"
         delete "/logout", to: "auth#destroy"

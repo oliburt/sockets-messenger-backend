@@ -1,3 +1,3 @@
 class SummarizedChatroomsSerializer < ActiveModel::Serializer
-  attributes :id, :description
+  attributes :id, :name
 end

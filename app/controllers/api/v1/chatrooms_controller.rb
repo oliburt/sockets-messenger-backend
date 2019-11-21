@@ -2,14 +2,15 @@ class Api::V1::ChatroomsController < ApplicationController
     
     def index
         # only serve public chatrooms
-        chatrooms = Chatroom.all.filter{|room| room.public }
+        chatrooms = Chatroom.where("public = ?", true)
         render json: chatrooms, each_serializer: SummarizedChatroomsSerializer
     end
 
     def uindex
       if @current_user
-        chatrooms = Chatroom.includes(:users).where('users.id = ?', @current_user.id).references(:users)
+        # chatrooms = Chatroom.includes(:users).where('users.id = ?', @current_user.id).references(:users)
         # Todo filter for current_user
+        chatrooms = Chatroom.joins(:user_chatrooms).where(user_chatrooms: {user_id: @current_user.id})
         render json: chatrooms
       else
         render json: []
@@ -47,8 +48,8 @@ class Api::V1::ChatroomsController < ApplicationController
     def dmcreate
       chatroom = Chatroom.new(chatroom_params)
       if chatroom.save
+      
         receiver = User.find(params[:receiver_id])
-
         ownership1 = UserChatroom.create(chatroom: chatroom, user: @current_user)
         ownership2 = UserChatroom.create(chatroom: chatroom, user: receiver)
 

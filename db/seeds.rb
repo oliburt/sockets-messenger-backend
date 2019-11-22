@@ -10,7 +10,3 @@ UserChatroom.destroy_all
 User.destroy_all 
 Chatroom.destroy_all
 
-
-chatrooms = Chatroom.create([{name: "Global", description: "TEST", public: true}])
-
-UserChatroom.create([{user_id: 1, chatroom_id: 1}])

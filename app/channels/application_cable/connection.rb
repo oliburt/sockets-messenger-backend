@@ -13,6 +13,7 @@ module ApplicationCable
       if verified_user = User.find(JWT.decode(cookies.signed[:jwt], ENV['RAILS_SECRET'])[0]["user_id"])
         verified_user
       else
+        cookies.delete(:jwt)
         reject_unauthorized_connection
       end
     end

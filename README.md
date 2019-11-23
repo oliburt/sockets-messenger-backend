@@ -1,6 +1,6 @@
 # Sockets-Chat
 
-Sockets chat is an instant messaging app. As a user you can view and message public Chatrooms or create your own. You can also directly message other users as a direct message which is private to the two people involved. This repo is only for the backe end of the application. You can find the front-end here: [Frontend-Repo](https://github.com/oliburt/sockets-messenger-frontend)
+Sockets chat is an instant messaging app. As a user you can view and message public Chatrooms or create your own. You can also directly message other users as a direct message which is private to the two people involved. This repo is only for the back end of the application. You can find the front-end here: [Frontend-Repo](https://github.com/oliburt/sockets-messenger-frontend)
 
 Here is a link to a live (frontend) version: [Demo](https://s-chat-app-frontend.herokuapp.com/)
 

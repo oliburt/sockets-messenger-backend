@@ -40,7 +40,7 @@ to spin up the development server on your localhost.
 *The back-end has been configured to only accept requests from the live front-end. In order to change this configuration to look in /config/initializers/cors.rb and change the origin urls to your choosing.
 For Action Cable in production go to /config/environments/production.rb and change "config.action_cable.allowed_request_origins" and "config.web_socket_server_url" to your choosing.*
 
-*Also in order to get the JWT authentication you will need to create an environment variable called 'RAILS_SECRET'. To set this up, in the config file, create a file named local_env.yml (/config/local_env.yml) and save:*
+*Also in order to get the JWT authentication to work you will need to create an environment variable called 'RAILS_SECRET'. To set this up, in the config file, create a file named local_env.yml (/config/local_env.yml) and save:*
 ```
 RAILS_SECRET: "[YOUR_SECRET_HERE]"
 ```

@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins /https:\/\/s-chat-app-frontend.herokuapp.com\/*/, /http:\/\/localhost:3001\/*/
+    origins /https:\/\/s-chat-app-frontend.herokuapp.com\/*/, /http:\/\/localhost:3001\/*/, /http:\/\/192.168.1.107:3001\/*/
     
     resource '*',
       headers: :any,

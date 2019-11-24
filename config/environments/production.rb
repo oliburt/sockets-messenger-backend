@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.web_socket_server_url = "wss://chat-sockets-application.herokuapp.com/"
-  config.action_cable.allowed_request_origins = [/https:\/\/s-chat-app-frontend.herokuapp.com\/*/, /http:\/\/s-chat-app-frontend.herokuapp.com\/*/]
+  config.action_cable.allowed_request_origins = [/https:\/\/s-chat-app-frontend.herokuapp.com\/*/, /http:\/\/s-chat-app-frontend.herokuapp.com\/*/, /http:\/\/192.168.1.107:3001\/*/]
 
 
   # Code is not reloaded between requests.

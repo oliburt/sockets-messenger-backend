@@ -21,7 +21,13 @@
             token = get_token
             if token
                 decoded_token = decode_token(token)
-                @current_user = User.find(decoded_token["user_id"])
+                user = User.find(decoded_token["user_id"])
+                if user
+                    @current_user = user
+                else
+                    cookies.delete(:jwt)
+                    @current_user = nil
+                end
             else
                 @current_user = nil
             end

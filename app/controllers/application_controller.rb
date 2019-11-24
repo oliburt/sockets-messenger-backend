@@ -21,7 +21,7 @@
             token = get_token
             if token
                 decoded_token = decode_token(token)
-                user = User.find(decoded_token["user_id"])
+                user = User.find_by_id(decoded_token["user_id"])
                 if user
                     @current_user = user
                 else

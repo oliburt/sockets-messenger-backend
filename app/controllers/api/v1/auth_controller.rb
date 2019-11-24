@@ -8,7 +8,7 @@ class Api::V1::AuthController < ApplicationController
             cookies.signed[:jwt] = {value: jwt_token, httponly: true, expires: 1.hour.from_now}
             render json: { user: UserSerializer.new(user) }, status: :accepted
         else
-            render json: { error: 'Invalid email or password' }, status: :unauthorized
+            render json: { error: 'Invalid username or password' }, status: :unauthorized
         end
     end
 

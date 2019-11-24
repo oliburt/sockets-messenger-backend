@@ -10,7 +10,8 @@ module ApplicationCable
 
     def find_verified_user
       
-      if verified_user = User.find(JWT.decode(cookies.signed[:jwt], ENV['RAILS_SECRET'])[0]["user_id"])
+      verified_user = User.find(JWT.decode(cookies.signed[:jwt], ENV['RAILS_SECRET'])[0]["user_id"])
+      if verified_user
         verified_user
       else
         cookies.delete(:jwt)

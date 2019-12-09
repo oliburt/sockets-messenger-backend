@@ -14,7 +14,7 @@
         end
     
         def get_token
-            cookies.signed[:jwt] 
+            cookies.signed[:jwt]
         end
     
         def set_current_user
